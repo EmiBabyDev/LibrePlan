@@ -70,6 +70,7 @@ public class TestGRE01 {
 		Thread.sleep(2000);
 		assertTrue(driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div/div/div/div[2]/div/div/div/div/div[2]/div[2]/div/div/div/table/tbody/tr/td[1]")).isDisplayed());
 		log.info("[CREATE PARTICIPANT PAGE] IS DISPLAYED");
+		page_participant.CreateParticipant(driver);
 	
 	
 	}

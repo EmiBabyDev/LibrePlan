@@ -14,12 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * TestGRE02 is the test class for creating a machine
- * @author formation
- *
- */
-public class TestGRE02 {
+public class TestPROTA04 {
 	static Logger log = LoggerFactory.getLogger(TestConnect.class);
 	WebDriver driver;
 	WebDriverWait wait;
@@ -46,7 +41,8 @@ public class TestGRE02 {
 
 	/**
 	 * testCreateMachine() is the test method of the new machine
-	 * @throws InterruptedException 
+	 * 
+	 * @throws InterruptedException
 	 * 
 	 */
 	@Test
@@ -56,26 +52,33 @@ public class TestGRE02 {
 		log.info("LIBREPLAN IS OPEN !");
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		PageIndex page_index = page_login.toLogIn(driver, "admin", "admin");
-		assertTrue(driver.findElement(By.xpath("//button[@class='z-menu-btn' and contains(., 'Calendrier')]")).isDisplayed());
+		assertTrue(driver.findElement(By.xpath("//button[@class='z-menu-btn' and contains(., 'Calendrier')]"))
+				.isDisplayed());
 		log.info("CONNECTED : [CALENDAR TAB] IS DISPLAYED");
-		
-		// PT2 : Access the machine management page
-		PageMachine page_machine = page_index.clickMachine(driver);
-		assertTrue(driver.findElement(By.xpath("//div[@class='z-window-embedded-header' and contains(.,'Machines Liste')]")).isDisplayed());
-		log.info("[LIST MACHINES PAGE] IS DISPLAYED");
-		
-		// PT3 : Create a machine - Access to the creation form
-		ToolBox.clickCreateElement(driver);
 		Thread.sleep(2000);
-		assertTrue(driver.findElement(By.xpath("//table[contains(@class,'caption-title z-caption' )]/tbody/tr/td[1][contains(@class,'caption') and contains(.,'Machine')]")).isDisplayed());
-		assertTrue(driver.findElement(By.xpath("//li[contains(@class,'z-tab-seld')]/div/div/div/span[contains(.,'Donnée de la machine')]")).isDisplayed());
-		log.info("[CREATE MACHINE PAGE] IS DISPLAYED");
-		log.info("[MACHINE DATA] TAB SELECTED BY DEFAULT");
-		
-		// PT4 : Create a machine - Compliance of the "Machine data" tab
-		PageMachine page_machine1 = PageFactory.initElements(driver,PageMachine.class);
-		page_machine1.fillInMachine(driver);
-		
+
+		driver.findElement(By.xpath("//td[text()='Liste des projets']")).click();
+		assertTrue(driver.findElement(By.xpath("//td[text()='Liste des projets']")).isDisplayed());
+		driver.findElement(By.xpath("(//td/div/span)[1]")).click();
+		driver.findElement(By.xpath("//td[text()='Planification de projet']")).click();
+		driver.findElement(By.xpath("(//select)[1]")).click();
+		driver.findElement(By.xpath("//option[text()='Année']")).click();
+		// check H1 and H2 are present
+		assertTrue(driver.findElement(By.xpath("(//td[contains(text(),'H1')]/following::td[contains(text(),'H2')])[1]"))
+				.isDisplayed());
+		driver.findElement(By.xpath("(//select)[1]")).click();
+		driver.findElement(By.xpath("//option[text()='Trimestre']")).click();
+		// check Q1 Q2 Q3 Q4 are present
+
+		assertTrue(driver.findElement(By.xpath(
+				"(//td[contains(text(),'Q1')]/following::td[contains(text(),'Q2')]/following::td[contains(text(),'Q3')]/following::td[contains(text(),'Q4')])[1]"))
+				.isDisplayed());
+		driver.findElement(By.xpath("(//select)[1]")).click();
+		driver.findElement(By.xpath("//option[text()='Mois']")).click();
+		assertTrue(
+				driver.findElement(By.xpath("(//div[contains(text(),'H1')]/following::div[contains(text(),'H2')])[1]"))
+						.isDisplayed());
+
 	}
 
 }
