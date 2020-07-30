@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * PageLogin is the class of the login page
+ * 
  * @author formation
  *
  */
@@ -21,10 +22,18 @@ public class PageLogin {
 	WebElement field_password;
 	@FindBy(name = "button")
 	WebElement btn_submit;
-	
+
+	// Login Alexis
+	@FindBy(xpath = "//input[@name='j_username']")
+	WebElement username;
+	@FindBy(xpath = "//input[@name='j_password']")
+	WebElement password;
+
 	/**
 	 * toLogin() is the connection method to the application in the Index page
-	 * @param driver u p
+	 * 
+	 * @param driver
+	 *            u p
 	 * @return instantiating the index page
 	 */
 	public PageIndex toLogIn(WebDriver driver, String u, String p) {
@@ -32,5 +41,13 @@ public class PageLogin {
 		ToolBox.fillInField(field_password, p);
 		btn_submit.click();
 		return PageFactory.initElements(driver, PageIndex.class);
+	}
+	
+	public PageAccueil fillInLogin(WebDriver driver) {
+		username.clear();
+		username.sendKeys("admin");
+		password.clear();
+		password.sendKeys("admin");
+		return PageFactory.initElements(driver, PageAccueil.class);
 	}
 }

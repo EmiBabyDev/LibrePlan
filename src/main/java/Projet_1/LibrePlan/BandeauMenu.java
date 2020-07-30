@@ -29,6 +29,11 @@ public abstract class BandeauMenu {
 	WebElement item_participant;
 	@FindBy(xpath = "//a[contains(@href,'/machines.zul')]")
 	WebElement item_machine;
+	@FindBy(xpath = "//button[contains(@class, '')][contains(.,'Coût')]")
+	WebElement ongl_cout;
+	@FindBy(xpath = "//a[contains(@id, 'r0-a')]")
+	WebElement item_feuille_de_temps;
+	
 	
 	/**
 	 * clickParticipant() is the access method to the participant item
@@ -78,6 +83,11 @@ public abstract class BandeauMenu {
 		return PageFactory.initElements(driver, PageAvancement.class);
 	}
 
-	
+	public PageListeFeuilleDeTemps clicFeuilleDeTemps(WebDriver driver) {
+		Actions action = new Actions(driver);
+		action.moveToElement(ongl_cout).build().perform();
+		item_feuille_de_temps.click();
+		return PageFactory.initElements(driver, PageListeFeuilleDeTemps.class);
+	}
 
 }
