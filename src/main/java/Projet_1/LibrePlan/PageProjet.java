@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class PageProjet {
-	static Logger log = LoggerFactory.getLogger(TestConnect.class);
+	static Logger log = LoggerFactory.getLogger(Connexion.class);
 	
 	@FindBy(xpath = "//*[contains(text(), 'PROJET_TEST1')]") 
     WebElement données_nom_projet;	
@@ -182,9 +182,9 @@ public class PageProjet {
 		catch(org.openqa.selenium.StaleElementReferenceException ex){
 			ToolBox.fillInField(code4, "T4");
 		}
-		
-//		ToolBox.fillInField(code3, "T3");
-//		ToolBox.fillInField(code4, "T4");
+		/*
+		ToolBox.fillInField(code3, "T3");
+		ToolBox.fillInField(code4, "T4");*/
 		return PageFactory.initElements(driver, PageProjet.class);
 	}
 	
@@ -194,7 +194,7 @@ public class PageProjet {
 	 * @throws java.lang.InterruptedException
 	 * @return instantiating the project page
 	 */
-	public PageProjet fillDates(WebDriver driver) throws InterruptedException {
+public PageProjet fillDates(WebDriver driver) throws InterruptedException {
 		
 		Calendar c = Calendar.getInstance();
 		Integer month=c.get(Calendar.MONTH)+1;
@@ -205,10 +205,10 @@ public class PageProjet {
 
 		ToolBox.fillInField(date_début1, "05/"+stmonth+"/"+styear);
 		ToolBox.fillInField(date_début2, "08/"+stmonth+"/"+styear);
-//		ToolBox.fillInField(dateDébut3, "");
-//		ToolBox.fillInField(dateDébut4, "");
-//		ToolBox.fillInField(dateFin1, "T1");
-//		ToolBox.fillInField(dateFin2, "T2");
+		/*ToolBox.fillInField(dateDébut3, "");
+		ToolBox.fillInField(dateDébut4, "");
+		ToolBox.fillInField(dateFin1, "T1");
+		ToolBox.fillInField(dateFin2, "T2");*/
 		ToolBox.fillInField(date_fin3, "03/"+stmonth+"/"+styear);
 		ToolBox.fillInField(date_fin4, "08/"+stmonth+"/"+styear);
 		enregistrer_projet.click();
@@ -223,21 +223,21 @@ public class PageProjet {
 	 * @throws java.lang.InterruptedException
 	 * @return instantiating the project page
 	 */
-	public PageProjet moveElements(WebDriver driver) throws InterruptedException {
-		
-		select1.click();
-		select1.click();
-		Thread.sleep(2000);
-		fleche_bas.click();
-		/*assertEquals(select1, drag2);
-		log.info("1=2");*/
-		Thread.sleep(2000);
-		select3.click();
-		Thread.sleep(2000);
-		fleche_haut.click();
-		//assertEquals(select3, drag2);
-		return PageFactory.initElements(driver, PageProjet.class);
-	}
+public PageProjet moveElements(WebDriver driver) throws InterruptedException {
+	
+	select1.click();
+	select1.click();
+	Thread.sleep(2000);
+	fleche_bas.click();
+	/*assertEquals(select1, drag2);
+	log.info("1=2");*/
+	Thread.sleep(2000);
+	select3.click();
+	Thread.sleep(2000);
+	fleche_haut.click();
+	//assertEquals(select3, drag2);
+	return PageFactory.initElements(driver, PageProjet.class);
+}
 	
 	/**
 	 * creaTache1() is the method of creating task 1
@@ -245,13 +245,14 @@ public class PageProjet {
 	 * @throws java.lang.InterruptedException
 	 * @return instantiating the project page
 	 */
-	public PageProjet creaTache1(WebDriver driver) throws InterruptedException {	
-		ToolBox.fillInField(nouvelle_tache, "Tache1-P1");
-		ToolBox.fillInField(champ_heures, "5");
-		btn_ajouter.click();
-		log.info("tache 1 créée");
-		return PageFactory.initElements(driver, PageProjet.class);
-	}
+public PageProjet creaTache1(WebDriver driver) throws InterruptedException {
+	
+	ToolBox.fillInField(nouvelle_tache, "Tache1-P1");
+	ToolBox.fillInField(champ_heures, "5");
+	btn_ajouter.click();
+	log.info("tache 1 créée");
+	return PageFactory.initElements(driver, PageProjet.class);
+}
 	
 	/**
 	 * creaTache234() is the method of creating task 2, 3 and 4
@@ -259,20 +260,23 @@ public class PageProjet {
 	 * @throws java.lang.InterruptedException
 	 * @return instantiating the project page
 	 */
-	public PageProjet creaTache234(WebDriver driver) throws InterruptedException {	
-		ToolBox.fillInField(nouvelle_tache, "Tache2-P1");
-		ToolBox.fillInField(champ_heures, "10");
-		btn_ajouter.click();
-		ToolBox.fillInField(nouvelle_tache, "Tache3-P1");
-		ToolBox.fillInField(champ_heures, "20");
-		btn_ajouter.click();
-		Thread.sleep(2000);
-		ToolBox.fillInField(nouvelle_tache, "Tache4-P1");
-		ToolBox.fillInField(champ_heures, "8");
-		btn_ajouter.click();
-		log.info("taches 2,3,4 créées");
-		return PageFactory.initElements(driver, PageProjet.class);
-	}
+public PageProjet creaTache234(WebDriver driver) throws InterruptedException {
+	
+	ToolBox.fillInField(nouvelle_tache, "Tache2-P1");
+	ToolBox.fillInField(champ_heures, "10");
+	btn_ajouter.click();
+	Thread.sleep(2000);
+	ToolBox.fillInField(nouvelle_tache, "Tache3-P1");
+	ToolBox.fillInField(champ_heures, "20");
+	btn_ajouter.click();
+	Thread.sleep(2000);
+	ToolBox.fillInField(nouvelle_tache, "Tache4-P1");
+	ToolBox.fillInField(champ_heures, "8");
+	btn_ajouter.click();
+	log.info("taches 2,3,4 créées");
+	return PageFactory.initElements(driver, PageProjet.class);
+}
+
 	
 	/**
 	 * ordreChrono() is the method of checking sorting in chronological order
@@ -280,13 +284,13 @@ public class PageProjet {
 	 * @throws java.lang.InterruptedException
 	 * @return instantiating the project page
 	 */
-	public PageProjet ordreChrono(WebDriver driver) throws InterruptedException {
-		
-		assertTrue(driver.findElement(By.xpath("//input[@value='5']/following::input[@value='10']/following::input[@value='20']/following::input[@value='8']")).isDisplayed());
-		log.info("Elements présents en ordre chrono");
+public PageProjet ordreChrono(WebDriver driver) throws InterruptedException {
+	
+	assertTrue(driver.findElement(By.xpath("//input[@value='5']/following::input[@value='10']/following::input[@value='20']/following::input[@value='8']")).isDisplayed());
+	log.info("Elements présents en ordre chrono");
 
-		return PageFactory.initElements(driver, PageProjet.class);
-	}
+	return PageFactory.initElements(driver, PageProjet.class);
+}
 	
 	/**
 	 * verifCrea() is the method of checking the creation of tasks
@@ -398,7 +402,7 @@ public class PageProjet {
 
 		return PageFactory.initElements(driver, PageAccueil.class);
 	}
-	
+
 	/**
 	 * verifDonneesProjets() is the method of checking data visibility
 	 * @param driver

@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class TestGRE02 {
-	static Logger log = LoggerFactory.getLogger(TestConnect.class);
+	static Logger log = LoggerFactory.getLogger(Connexion.class);
 	WebDriver driver;
 	WebDriverWait wait;
 
@@ -73,9 +73,8 @@ public class TestGRE02 {
 		log.info("[MACHINE DATA] TAB SELECTED BY DEFAULT");
 		
 		// PT4 : Create a machine - Compliance of the "Machine data" tab
-		
-		//assertTrue(driver.findElement(By.xpath("//span[contains(@class,'save-button')]/descendant::td[@xpath='1']")).isDisplayed());
-
+		PageMachine page_machine1 = PageFactory.initElements(driver,PageMachine.class);
+		page_machine1.fillInMachine(driver);
 		
 	}
 
