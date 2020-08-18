@@ -19,7 +19,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
-      <scope>test</scope>
+
     </dependency>
         <!-- Dépendances selenium 3.141.59 -->
     <dependency>
@@ -54,7 +54,7 @@
 		<groupId>org.dbunit</groupId>
 		<artifactId>dbunit</artifactId>
 		<version>2.6.0</version>
-		<scope>test</scope>
+
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
