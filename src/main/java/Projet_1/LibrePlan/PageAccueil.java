@@ -28,7 +28,7 @@ public class PageAccueil {
     private static final String DATE_FORMAT = "dd/MM/yyyy";
     private static final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
     private static final DateTimeFormatter dateFormat8 = DateTimeFormatter.ofPattern(DATE_FORMAT);
-    static Logger log = LoggerFactory.getLogger(Connexion.class);
+    //static Logger log = LoggerFactory.getLogger(Connexion.class);
 	
 	@FindBy(xpath = "//img[@src='/libreplan/common/img/ico_add.png']")
     WebElement nouveau_projet;	
@@ -100,7 +100,7 @@ public class PageAccueil {
 	 */
 	public PageAccueil verifChamps(WebDriver driver) throws InterruptedException {
 	
-		ToolBox.isElementPresent(nom_projet, log);
+		//ToolBox.isElementPresent(nom_projet, log);
 		assertTrue(nom_projet.isDisplayed());
 		assertTrue(gen_code_projet.isDisplayed());
 		assertTrue(code_projet.isDisplayed());
